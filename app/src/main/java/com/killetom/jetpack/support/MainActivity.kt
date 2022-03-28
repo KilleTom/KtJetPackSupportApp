@@ -3,6 +3,7 @@ package com.killetom.jetpack.support
 import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.killetom.jetpack.permission.KTSupportPermission
 import com.killetom.jetpack.support.databinding.ActivityMainBinding
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         ktSupportPermission.attach(this)
 
@@ -30,9 +32,14 @@ class MainActivity : AppCompatActivity() {
                 .requestPermission(permissions) {
 
                     //理成功后逻辑
-                    okAction = {}
+                    okAction = {
+                        Toast.makeText(this@MainActivity,"请求成功",Toast.LENGTH_SHORT).show()
+                    }
                     //处理失败后逻辑
-                    failAction = {}
+                    failAction = {
+                        Toast.makeText(this@MainActivity,"请求失败",Toast.LENGTH_SHORT).show()
+
+                    }
 
                 }
         }
@@ -43,9 +50,13 @@ class MainActivity : AppCompatActivity() {
                 .requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
 
                     //理成功后逻辑
-                    okAction = {}
+                    okAction = {
+                        Toast.makeText(this@MainActivity,"请求成功",Toast.LENGTH_SHORT).show()
+                    }
                     //处理失败后逻辑
-                    failAction = {}
+                    failAction = {
+                        Toast.makeText(this@MainActivity,"请求失败",Toast.LENGTH_SHORT).show()
+                    }
 
                 }
         }
